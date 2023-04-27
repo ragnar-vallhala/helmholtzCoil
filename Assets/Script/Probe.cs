@@ -5,8 +5,7 @@ using UnityEngine.UIElements;
 
 public class Probe : MonoBehaviour
 {
-    [SerializeField] private int step = 0;
-
+    int step = 0;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -30,9 +29,8 @@ public class Probe : MonoBehaviour
 
         Vector3 r1 = coil1.transform.position - transform.position;
 
-        double i1 = coil1.getCurrent();
 
-        double magField1 = 3.14 * 2 * coil1.getCurrent() * coil1.getRadius() * coil1.getRadius() / Mathf.Pow((r1.sqrMagnitude+ coil1.getCurrent() * coil1.getRadius()),1.5f);
+        double magField1 = Mathf.PI * 2 * coil1.getCurrent() * coil1.getRadius() * coil1.getRadius() / Mathf.Pow((r1.sqrMagnitude+ coil1.getCurrent() * coil1.getRadius()),1.5f);
 
         Debug.Log(magField1);
     }
